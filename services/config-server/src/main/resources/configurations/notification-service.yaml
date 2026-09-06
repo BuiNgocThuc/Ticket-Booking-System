@@ -1,0 +1,13 @@
+server:
+  port: 8040
+
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://notification_user:ticket_dev@localhost:27017/notification_db?authSource=notification_db
+  kafka:
+    bootstrap-servers: localhost:29092
+  mail:
+    host: localhost
+    port: 1025

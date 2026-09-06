@@ -1,0 +1,14 @@
+server:
+  port: 8050
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/event_catalog_db
+    username: event_catalog_user
+    password: ticket_dev
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
