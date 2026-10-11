@@ -8,3 +8,6 @@ target/
 # Operating system
 .DS_Store
 Thumbs.db
+
+# Local Codex instructions
+AGENTS.md
