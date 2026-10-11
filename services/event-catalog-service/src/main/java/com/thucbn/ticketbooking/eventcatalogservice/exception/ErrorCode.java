@@ -117,6 +117,20 @@ public enum ErrorCode {
             1017,
             "Event is already cancelled",
             HttpStatus.BAD_REQUEST
+    ),
+    INVALID_RESERVATION_QUANTITY(1018, "Reservation quantity must be greater than zero", HttpStatus.BAD_REQUEST),
+    INSUFFICIENT_TICKET_AVAILABILITY(1019, "Not enough tickets available", HttpStatus.CONFLICT),
+    EVENT_NOT_PUBLISHED(1020, "Only published events can accept reservations", HttpStatus.BAD_REQUEST),
+    INVALID_RESERVATION_ITEMS(1021, "At least one reservation item is required", HttpStatus.BAD_REQUEST),
+    DUPLICATE_TICKET_TYPE_RESERVATION(
+            1022,
+            "A ticket type can be reserved only once per request",
+            HttpStatus.BAD_REQUEST
+    ),
+    TICKET_TYPE_NOT_FOUND(
+            1023,
+            "Ticket type not found for this event",
+            HttpStatus.NOT_FOUND
     );
 
     int code;

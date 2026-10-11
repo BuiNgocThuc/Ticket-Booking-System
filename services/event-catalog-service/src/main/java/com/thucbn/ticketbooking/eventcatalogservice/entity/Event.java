@@ -109,4 +109,17 @@ public class Event extends BaseAuditEntity {
 
         status = EventStatus.CANCELLED;
     }
+
+    public void ensurePublishedForReservation() {
+        if (status != EventStatus.PUBLISHED) {
+            throw new AppException(ErrorCode.EVENT_NOT_PUBLISHED);
+        }
+    }
+
+    public TicketType getTicketType(UUID ticketTypeId) {
+        return ticketTypes.stream()
+                .filter(ticketType -> ticketType.getId().equals(ticketTypeId))
+                .findFirst()
+                .orElseThrow(() -> new AppException(ErrorCode.TICKET_TYPE_NOT_FOUND));
+    }
 }

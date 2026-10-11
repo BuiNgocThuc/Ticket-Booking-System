@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import jakarta.persistence.LockModeType;
+import org.springframework.data.jpa.repository.Lock;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -19,4 +21,9 @@ public interface EventRepository extends JpaRepository<Event, UUID> {
     Optional<Event> findByIdWithTicketTypes(@Param("eventId") UUID eventId);
 
     Page<Event> findByStatus(EventStatus status, Pageable pageable);
+
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @EntityGraph(attributePaths = "ticketTypes")
+    @Query("select event from Event event where event.id = :eventId")
+    Optional<Event> findByIdWithTicketTypesForUpdate(@Param("eventId") UUID eventId);
 }

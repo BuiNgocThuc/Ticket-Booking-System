@@ -6,7 +6,11 @@ import com.thucbn.ticketbooking.eventcatalogservice.dto.response.EventDetailResp
 import com.thucbn.ticketbooking.eventcatalogservice.dto.response.EventSummaryResponse;
 import com.thucbn.ticketbooking.eventcatalogservice.dto.response.EventStatusResponse;
 import com.thucbn.ticketbooking.eventcatalogservice.dto.response.TicketTypeResponse;
+import com.thucbn.ticketbooking.eventcatalogservice.dto.response.TicketReservationItemResponse;
+import com.thucbn.ticketbooking.eventcatalogservice.dto.response.TicketReservationResponse;
 import com.thucbn.ticketbooking.eventcatalogservice.entity.Event;
+import com.thucbn.ticketbooking.eventcatalogservice.entity.TicketReservation;
+import com.thucbn.ticketbooking.eventcatalogservice.entity.TicketReservationItem;
 import com.thucbn.ticketbooking.eventcatalogservice.entity.TicketType;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
@@ -29,6 +33,11 @@ public interface EventMapper {
     TicketTypeResponse toTicketTypeResponse(TicketType ticketType);
 
     EventStatusResponse toEventStatusResponse(Event event);
+
+    @Mapping(target = "reservationId", source = "id")
+    TicketReservationResponse toTicketReservationResponse(TicketReservation reservation);
+
+    TicketReservationItemResponse toTicketReservationItemResponse(TicketReservationItem item);
 
     @AfterMapping
     default void addTicketTypes(

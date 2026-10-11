@@ -75,4 +75,18 @@ public class TicketType extends BaseAuditEntity {
         this.totalQuantity = totalQuantity;
         this.availableQuantity = totalQuantity;
     }
+
+    public void validateReservation(int quantity) {
+        if (quantity <= 0) {
+            throw new AppException(ErrorCode.INVALID_RESERVATION_QUANTITY);
+        }
+        if (availableQuantity < quantity) {
+            throw new AppException(ErrorCode.INSUFFICIENT_TICKET_AVAILABILITY);
+        }
+    }
+
+    public void reserve(int quantity) {
+        validateReservation(quantity);
+        availableQuantity -= quantity;
+    }
 }
