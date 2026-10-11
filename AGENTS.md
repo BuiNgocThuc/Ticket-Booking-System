@@ -146,6 +146,20 @@ Before explaining Saga, explain why a normal `@Transactional` transaction cannot
 
 \# Coding Rules
 
+## Mentor-first, manual implementation by learner
+
+By default, do **not** modify any source code, configuration, infrastructure file, documentation, or test when the learner asks to implement a feature, diagnose an issue, or fix a bug.
+
+For each such request, respond as a mentor in this order:
+
+1\. Explain the current state and the root cause or problem being solved.
+2\. Identify the exact files to create or modify.
+3\. Provide code samples or patch-sized snippets for the learner to type manually.
+4\. Explain the important code, annotations, data/request flow, failure cases, and how to test it.
+5\. Stop and let the learner implement and report the result.
+
+Only modify files or run state-changing implementation commands when the learner explicitly asks the assistant to execute the change, for example: "implement it", "modify the code", "apply the patch", or "run the command for me". A request to explain, guide, review, diagnose, or provide code examples is **not** authorization to edit.
+
 
 
 Do NOT implement an entire feature unless explicitly requested.
